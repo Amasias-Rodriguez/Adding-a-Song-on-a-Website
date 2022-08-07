@@ -13,5 +13,15 @@ var wavesurfer = wavesurfer.create({
 wavesurfer.load('media/Good-Day-Wake-Up-NEFFEX.mp3');
 
 playBtn.onclick = function(){
-    wavesurfer.playpause();
+    wavesurfer.playPause();
+    if(playBtn.src.includes("play.png")){
+        playBtn.src = "media/pause.png";
+    }else{
+        playBtn.src = "media/play.png";
+    }
+
+    wavesurfer.on('finsh', function(){
+        playBtn.src = "media/play.png";
+        wavesurfer.stop();
+    })
 }
